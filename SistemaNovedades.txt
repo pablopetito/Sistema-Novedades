@@ -1,0 +1,126 @@
+SISTEMA CONTROL Y SEGUIMIENTO DE NOVEDADES (consultas, reclamos, solicitudes, información) 
+
+**** REGLAS DEL NEGOCIO ***********************************************************************************
+El sistema registrará todos los llamados de reclamos, consultas, solicitudes, etc, para luego dividirlas segun segun su estado.
+
+El estado de las NOVEDADES seran: ACTIVA, A PROGRAMAR,EN PROCESO, SOLUCIONADA, SUSPENDIDA
+
+Las NOVEDADES deberan tener como minimo los siguientes datos:
+  - Codigo de Novedad
+  - Fecha Recepcion
+  - Fecha Finalizacion
+  - Empresa
+  - Cliente 
+  - Detalle de la Solicitud/Reclamo/Consulta/Informacion
+  - Detalle Comentarios y/o Acciones
+  - Detalle Interno
+  - Rubro 
+  - Proveedor/Responsable
+  - Estado
+  - Prioridad 
+
+En el cargado del cliente se debera contemplar  
+  
+  
+PANTALLA PRINCIPAL 
+  Se ubicara un listado de las NOVEDADES de la siguiente manera:
+
+   |=============|=================|================|=================|================|
+   |   Activas   |   A Programar   |   En Proceso   |   Solucionada   |   Suspendida   |
+   |=============|=================|================|=================|================|
+   |             |                 |                |                 |                |
+   |-------------|-----------------|----------------|-----------------|----------------|
+   |             |                 |                |                 |                |
+   |-------------|-----------------|----------------|-----------------|----------------|
+   
+  Dentro de cada celda debera aparecer un TIKECT, con los detalles mas importantes de la novedad, segun el formato siguiente: 
+
+       ----------------------------------
+       | xxxx   xxxxxx   xx xx  x x x x |
+       | xxxx xxx  xxx   xxx  xxx  xxx  |
+       |   xxxxxxx   xxxxx    xxxxx     |
+       ----------------------------------
+       
+ El mismo estara distribuido segun su estado, y efectuando doble-click sobre el mismo, se debera abrir un formulario con todos
+ los detalles de la novedad. Incluyendo la posibilidad de modificar los datos que sean necesarios.
+ 
+ Debera incorporarse, ademas, comandos para AGREGAR NUEVA NOVEDAD, ELIMINAR NOVEDAD, IMPRIMIR LISTADO.
+ 
+ Asimismo, se debera efectuar un algoritmo para facilitar el cambio de estado de los TICKETS (ejemplo: arrastrando a una nueva columna)
+ 
+IMPRESION DE LISTADOS
+
+  Listados a Imprimir de acuerdo a los siguientes filtros: 
+  
+  - por ESTADOS (ejemplo: ACTIVAS, A PROGRAMAR, etc), ha elegirse por el Operador, ordenadas por Prioridad en forma ascendente, Fecha en forma descendente
+  
+  - por ESTADOS, ha elegirse por el Operador, y EMPRESAS, ordenadas por Prioridad en forma ascendente, Fecha en forma descendente
+ 
+  - por ESTADOS, ha elegirse por el Operador, y PROVEEDOR, ordenadas por Prioridad en forma ascendente, Fecha en forma descendente
+ 
+  - por ESTADOS, ha elegirse por el Operador, y RUBRO, ordenadas por Prioridad en forma ascendente, Fecha en forma descendente
+
+ESTADISTICAS 
+    
+  Se deberan armar todas las estadisticas posibles, ejemplo: Total de Novedades en un mes, con sus promedios y/o porcentajes segun sus ESTADOS)
+  
+  
+************** DER - Diagrama Entidad Relacion ******************************************************************************************
+
+    Entidades: NOVEDADES, EMPRESAS, CLIENTES, RUBROS, PROVEEDORES, ESTADOS
+    
+    Entidades Opcionales: DOMICILIOS, LOCALIDADES, PROVINCIAS, PAIS
+
+
+                NOVDADES   
+ PK codigo_novedad:    int autoincrement
+    fecha_recepcion:      fecha       
+    fecha_finalizacion:   fecha
+ FK nro_cliente           int   
+ FK empresa:              string
+    detalle_novedad:      string
+    detalle_acciones:     string
+    detalle_interno:      string
+ FK rubro:                int  
+ FK poveedor:             int
+ FK codigo_estado:        int
+    prioridad:            tinyint 
+ 
+                EMPRESAS
+ PK codigo_empresa:       int autoincrement
+    nombre:               string
+    domicilio_calle:      string 
+    domicilio_nro:        int
+    domicilio_piso:       string
+    domicilio_dpto:       string
+    domicilio_localidad:  string
+    domicilio_provincia:  string
+    telefono_fijo:        bigint
+    telefono_celular      bigint
+    mail:                 string
+    rubro:                string
+    
+                CLIENTES
+ PK codigo_cliente        int autoincrement
+    apellido              string
+    nombres:              string
+    domicilio_calle:      string 
+    domicilio_nro:        int
+    domicilio_piso:       string
+    domicilio_dpto:       string
+    domicilio_localidad:  string
+    domicilio_provincia:  string
+    telefono_fijo_uno:    bigint
+    telefono_fijo_dos:    bigint    
+    telefono_celular_uno: bigint
+    telefono_celular_dos: bigint
+    mail:                 string
+    
+                RUBROS
+ PK codigo_rubro          int autoincrement
+    detalle               string
+    
+                ESTADOS
+ PK codigo_estado         int autoincrement
+    detalle               string
+    
