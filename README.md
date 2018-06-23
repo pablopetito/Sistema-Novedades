@@ -1,11 +1,9 @@
-# Sistema-Novedades | NOVEDADES v: 1.0.0
+# App Desktop - Sistema-Novedades | NOVEDADES v: 1.0.0
 
-Proyecto Propio | Sistema de Administracion de Novedades (Consultas-Reclamos-Solicitudes)
+#### Sistema de Administracion de Novedades (Consultas-Reclamos-Solicitudes)
 
-App Desktop - Sistema de Administracion de Novedades  
+Entorno Windows - Lenguaje Programacion JAVA 
 
-Entorno Windows - Microsoft Access - Base de Datos
+Iniciado: *Junio 2018*  Finalizado: *EN PROCESO*  
 
-Iniciado: Junio 2018  Finalizado: EN PROCESO  
-
-A Utilizar por "Petito inmobiliaria"
+Para ser utilizado por la Administracion e Inmobiliaria **"Petito inmobiliaria"**
